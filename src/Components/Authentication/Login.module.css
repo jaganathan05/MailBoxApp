@@ -1,0 +1,46 @@
+.login-box{
+
+    border: 2px solid rgb(255, 253, 253);
+    border-radius: 10px;
+    width: 400px;
+    height : auto;
+    padding: 20px;
+    background-image: radial-gradient( circle 382px at 50% 50.2%,  rgba(73,76,212,1) 0.1%, rgba(3,1,50,1) 100.2% );
+
+}
+
+.login-box h2{
+    color:yellow;
+}
+
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    margin: 60px;
+    
+}
+
+
+.input.invalid{
+    background-color: rgb(243, 26, 55);
+}
+.link{
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.link1{
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(253, 10, 10);
+    font-size: 20px;
+}
+.login-box p{
+    color: yellow;
+    font-size: 20px;
+}

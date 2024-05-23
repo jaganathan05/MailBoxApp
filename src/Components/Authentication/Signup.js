@@ -3,7 +3,7 @@ import  Button from "react-bootstrap/Button";
 import  FloatingLabel  from "react-bootstrap/FloatingLabel";
 import  Form  from "react-bootstrap/Form";
 import classes from './Signup.module.css'
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link  , useHistory} from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 
 function Signup (){
@@ -11,6 +11,7 @@ function Signup (){
     const emailref = useRef()
     const passwordref = useRef()
     const conformpasswordref = useRef() 
+    const history = useHistory()
     const submitformHandler = async (event)=>{ 
         event.preventDefault()
         let formvalid = false;
@@ -57,6 +58,8 @@ function Signup (){
           if(response){
             alert(response.data.message)
             console.log('signup successfull')
+            history.push('/login')
+
           }
           else {
             setvalidated(false)

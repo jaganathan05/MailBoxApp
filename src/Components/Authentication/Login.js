@@ -4,6 +4,8 @@ import classes from './Login.module.css'
 import  Button from "react-bootstrap/Button";
 import  FloatingLabel  from "react-bootstrap/FloatingLabel";
 import  Form  from "react-bootstrap/Form";
+import axios from "axios";
+
 
 function Login (){
     const [isvalidated,setvalidated]=useState(false)
@@ -11,63 +13,57 @@ function Login (){
     const passwordref = useRef()
     const history = useHistory();
     const submitformHandler = async (event)=>{ 
-        event.preventDefault()
-        let formvalid = false;
-        
-        const EnteredEmail = emailref.current.value
-        const EnteredPassword = passwordref.current.value
-
-        if(!EnteredEmail.trim().includes('@')){
+        try{
+            event.preventDefault()
+            let formvalid = false;
             
-                    alert('Enter Email Correctly')
+            const EnteredEmail = emailref.current.value
+            const EnteredPassword = passwordref.current.value
+    
+            if(!EnteredEmail.trim().includes('@')){
+                
+                        alert('Enter Email Correctly')
+                        setvalidated(false)
+            }
+            else{
+                if(EnteredPassword.length < 6){
+                    alert('PassWord Must Contain 6 letters')
                     setvalidated(false)
-        }
-        else{
-            if(EnteredPassword.length < 6){
-                alert('PassWord Must Contain 6 letters')
+                  }
+                  if(EnteredPassword.length >= 6){
+                        formvalid= true
+                        setvalidated(true)
+                        
+                  }
+            }
+    
+            if(formvalid){
+           
+              const data ={
+                        email: EnteredEmail,
+                        password: EnteredPassword,
+              } 
+              //console.log(data)
+    
+              const response = await axios.post('http://localhost:4000/login', data)
+    
+              if(response){
+                console.log('Login successfull')
+                console.log(response)
+                localStorage.setItem('token',response.data.idToken)
+                history.push('/Home')
+              }
+              else {
                 setvalidated(false)
-              }
-              if(EnteredPassword.length >= 6){
-                    formvalid= true
-                    setvalidated(true)
-                    
-              }
-        }
-
-        if(formvalid){
-       
-          const data ={
-                    email: EnteredEmail,
-                    password: EnteredPassword,
-                    returnSecureToken : true
-          } 
-          //console.log(data)
-
-          const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDAzYMyrP5pUcCeJ9QKrDnuXPIreusRbFw',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(data)
-          })
-
-          if(response.ok){
-            console.log('Login successfull')
-            
-            const responsedata =await response.json()
-            console.log(responsedata)
-            localStorage.setItem('token',responsedata.idToken)
-            history.push('/Home')
-          }
-          else {
-            const errorData = await response.json(); 
-            setvalidated(false)
-            alert(errorData.error.message); 
+                alert(response.data.message); 
+            } 
         }
         }
-        
-
-        
+        catch(error){
+            setvalidated(false);
+            alert(error.response?.data?.message || 'Login failed. Please try again.');
+        }
+    
 
     }
 
