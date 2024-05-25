@@ -79,19 +79,23 @@ function Signup (){
 
         <Form validated={isvalidated} className={classes['signup-box']}>
             <h2>Signup</h2>
-            <FloatingLabel  controlId="email" label='Email' className="mb-3"  >
+            <FloatingLabel  controlId="email" label='Email' className="mb-md-4 mb-sm-4  mb-4" >
                 <Form.Control type='email' placeholder='dsa' required ref={emailref} ></Form.Control >
             </FloatingLabel>
-            <FloatingLabel controlId="password" label='Password' className="mb-3"  >
+            <FloatingLabel controlId="password" label='Password' className="mb-md-4 mb-sm-4  mb-4"  >
                 <Form.Control type='password' placeholder='dsa' ref={passwordref} ></Form.Control>
             </FloatingLabel>
-            <FloatingLabel controlId="password" label='Conform Password' className="mb-3">
+            <FloatingLabel controlId="password" label='Conform Password' className="mb-md-4 mb-sm-4  mb-4">
                 <Form.Control type='password' placeholder='dsa' ref={conformpasswordref} ></Form.Control>
             </FloatingLabel>
-            <Button className="btn-dark btn-outline-info" onClick={submitformHandler}>Submit</Button>
-            <br></br>
+            <div className="d-flex justify-content-center">
+            <Button className="btn-primary btn-lg" onClick={submitformHandler}>Submit</Button>
+            
+            </div>
+            <div className="d-flex justify-content-center">
             <Link className={classes['link']} to='/login'>If You Already Have An Account Login !</Link>
-        </Form>
+            </div>
+            </Form>
     </div>
 
 }

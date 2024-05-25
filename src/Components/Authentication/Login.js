@@ -74,19 +74,23 @@ function Login (){
 
         <Form validated={isvalidated} className={classes['login-box']}>
             <h2>Login</h2>
-            <FloatingLabel  controlId="email" label='Email' className="mb-3"  >
+            <FloatingLabel  controlId="email" label='Email' className="mb-md-4 mb-sm-4  mb-4"  >
                 <Form.Control type='email' placeholder='dsa' required ref={emailref} ></Form.Control >
             </FloatingLabel>
-            <FloatingLabel controlId="password" label='Password' className="mb-3"  >
+            <FloatingLabel controlId="password" label='Password' className="mb-md-4 mb-sm-4  mb-2"  >
                 <Form.Control type='password' placeholder='dsa' ref={passwordref} ></Form.Control>
             </FloatingLabel>
-            <Link className={classes['link']} to='/forgetpassword'>Forget Password!</Link>
-            <br></br>
-            <Button className="btn-dark btn-outline-info" onClick={submitformHandler}>Submit</Button>
-            <br>
-            </br>
-            <Link className={classes['link']} to='/signup'>If You Don't Have An Account Signup !</Link>
+            <div className="d-flex justify-content-center mb-3">
+            <Link className={classes['link1']} to='/forgetpassword'>Forget Password!</Link>
+            </div>
+            <div className="d-flex justify-content-center">
+            <Button className="btn-primary" onClick={submitformHandler}>Submit</Button>
+            </div>
+            <div className="d-flex justify-content-center">
+            <Link className={classes['link1']} to='/signup'>If You Don't Have An Account Signup !</Link>
 
+            </div>
+            
         </Form>
     </div>
 
