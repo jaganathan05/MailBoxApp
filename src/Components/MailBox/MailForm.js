@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 
-function MailForm (){
+function MailForm (props){
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -67,8 +67,10 @@ content : draftToHtml(convertToRaw(editorState.getCurrentContent()))
             <ControlledEditor 
               editorState={editorState}
               onEditorStateChange={setEditorState}
+              className={classes['editor']}
             />
             <div className="d-flex justify-content-center">
+              <Button className='btn-danger' onClick={props.onClick}>Close</Button>
             <Button className="btn-primary" onClick={sendmailhandler}>Send</Button>
             </div>
             

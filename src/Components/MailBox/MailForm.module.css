@@ -13,7 +13,7 @@
     background: #F0C27B;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #4B1248, #F0C27B);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #4B1248, #F0C27B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+background-repeat :repeat;
 }
 
 .mail-box h2{
@@ -30,7 +30,7 @@ background: linear-gradient(to right, #4B1248, #F0C27B); /* W3C, IE 10+/ Edge, F
 .mailbox-container{
     display: flex;
     justify-content: center;
-    margin: 60px;
+    margin: 20px;
     
 }
 .mailtextarea{
@@ -41,18 +41,15 @@ background: linear-gradient(to right, #4B1248, #F0C27B); /* W3C, IE 10+/ Edge, F
     height: auto;
 }
 
-
-
-/* Mobile styles */
-@media (max-width: 600px) {
-    .mail-box {
-        width: 100%;
+@media (max-width: 768px) {
+    .mail-box{
+        width: 300px;
+        margin-left: 50px;
         padding: 10px;
     }
-
-    .mailbox-container {
-        margin: 40px ;
-        margin-top: 30%;
-    }
-
+    
 }
+
+
+
+

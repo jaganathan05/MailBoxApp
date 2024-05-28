@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Azonix';
+    src: url(/public/Fonts/Azonix.otf);
+}
+
+
+.inboxpage-container{
+    margin-top: 20px;
+
+}
+
+.inboxpage-container h2{
+    color : white;
+    font-family: 'Azonix';
+    text-align: center;
+}

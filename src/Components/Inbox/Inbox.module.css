@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Lemon Milk';
+    src: url(/public/Fonts/LEMONMILK-Medium.otf);
+}
+
+.inbox-box{
+
+    border: 2px solid rgb(255, 253, 253);
+    border-radius: 10px;
+    width: 600px;
+    min-height: 300px;
+    height : 400px;
+    padding: 20px;
+    background-color: rgb(31, 66, 112);
+    overflow-y: auto;
+}
+
+.inbox-box h2{
+    font-family: 'Lemon Milk';
+    font-size: 30px;
+    color : yellow;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.inbox-box h4{
+    font-family: 'Lemon Milk';
+    color: rgb(24, 219, 253);
+    text-align: center;
+}
+
+
+.inbox-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    
+}
+
+.inboxpage-container{
+    margin-top: 20px;
+}
+
+.inboxpage-container h2{
+    color : white;
+    font-family: 'Azonix';
+    text-align: center;
+}
+.singlemail{
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(235, 147, 33);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .inbox-box{
+        width: 300px;
+        margin-left: 50px;
+        padding: 10px;
+    }
+    
+}
+
+
+
+

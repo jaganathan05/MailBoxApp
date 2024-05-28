@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Azonix';
+    src: url(/public/Fonts/Azonix.otf);
+}
+
+
+.composs-container{
+    margin-top: 20px;
+
+}
+
+.composs-container h2{
+    color : white;
+    font-family: 'Azonix';
+    text-align: center;
+}

@@ -12,6 +12,12 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+body{
+  background: #870000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #190A05, #870000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
 
 .App-header {
   background-color: #282c34;
@@ -27,7 +33,7 @@
   padding: 12px;
 }
 .wrapper-class {
-  border: 1px solid #f1f1f1;
+  border: 1px solid #000000;
   padding: 5px;
   border-radius: 2px;
   margin-bottom: 20px;
@@ -35,7 +41,7 @@
 
 .editor-class {
   min-height: 100px auto;
-  background-color: #f1f1f1;
+  background-color: #81d7ff;
   padding: 10px;
   border: 1px solid #f1f1f1;
 }
