@@ -5,9 +5,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import {PencilSquare , EnvelopeArrowUpFill,  EnvelopeOpenFill} from "react-bootstrap-icons"
-import './PageList.css'; // Make sure to include custom CSS for vertical alignment and styling
+import './PageList.css'; 
+import { useSelector } from 'react-redux';
 
 function PageList(props) {
+  const noviewcount = useSelector(state=> state.Mail.NoViewCount)
   return (
     <div>
       <Navbar expand="sm" className="flex-column" >
@@ -16,7 +18,7 @@ function PageList(props) {
           <Navbar.Collapse id="basic-navbar-nav" className="flex-column">
             <Nav className="flex-column" id="navbar">
               <NavLink to='/composs' className='navlink '><PencilSquare/>  Composs</NavLink>
-              <NavLink to='/inbox' className='navlink ' ><EnvelopeOpenFill/>  INBOX</NavLink>
+              <NavLink to='/inbox' className='navlink ' ><EnvelopeOpenFill/>  INBOX {noviewcount>0 && <i className='count'>{  noviewcount  }</i>}</NavLink>
               <NavLink to='/sendbox' className='navlink ' ><EnvelopeArrowUpFill/>  SEND BOX </NavLink>
             </Nav>
             <Button className="mt-3">Logout</Button>

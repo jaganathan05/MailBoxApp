@@ -5,9 +5,11 @@ import  Button from "react-bootstrap/Button";
 import  FloatingLabel  from "react-bootstrap/FloatingLabel";
 import  Form  from "react-bootstrap/Form";
 import axios from "axios";
-
+import { Authactions } from "../../Store/Slices/Auth";
+import { useDispatch } from "react-redux";
 
 function Login (){
+    const dispatch = useDispatch()
     const [isvalidated,setvalidated]=useState(false)
     const emailref = useRef()
     const passwordref = useRef()
@@ -51,7 +53,8 @@ function Login (){
                 console.log('Login successfull')
                 console.log(response)
                 localStorage.setItem('token',response.data.idToken)
-                history.push('/Home')
+                history.push('/Home') 
+                dispatch(Authactions.login(response.data.idToken));
               }
               else {
                 setvalidated(false)

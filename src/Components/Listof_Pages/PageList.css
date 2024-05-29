@@ -49,6 +49,9 @@
     margin-top: 1rem; /* Add margin for spacing between elements */
   }
   
+  .count{
+    color: rgb(29, 245, 234);
+  }
   @media (max-width : 575px) {
 
     .navbar{

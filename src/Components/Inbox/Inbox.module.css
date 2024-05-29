@@ -52,9 +52,77 @@
     border: 2px solid white;
     border-radius: 15px;
     padding: 10px;
-    text-align: center;
     background-color: rgb(235, 147, 33);
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.circle{
+    font-size: 10px;
+    color : rgb(95, 255, 87);
+    border: 2px solid rgb(0, 39, 9);
+    border-radius: 50%;
+}
+.mailhead{
+    margin-left: 35%;
+    font-size: medium;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: rgb(22, 5, 46);
+}
+.mailhead-subject{
+margin-left: 50px;
+color : rgb(11, 61, 30);
+font-family: 'Lemon milk';
+}
+.mail-content{
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: white;
+    height: auto;
+    overflow-y: auto;
+}
+.mail-content h5,h6{
+    color: rgb(255, 4, 159);
+    
+    margin: 20px;
+    
+}
+.mail-content .email{
+    text-align: center;
+    color: rgb(18, 31, 0);
+}
+
+.mail-content .subject{
+    margin-left: 10px;
+    color: rgb(255, 72, 0);
+    border-bottom: 2px dashed rgb(0, 0, 0);
+    font-family: 'Lemon milk';
+} 
+.mail-content .content{
+    margin-left: 30px ;
+    
+}
+
+.back-button {
+    background-color: #b1074e;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.back-button:hover {
+    
+    background-color: #0056b3;
+}
+
+.time{
+margin-left: 20px;
+font-family: 'Lemon milk';
+color: rgb(4, 32, 15);
 }
 
 @media (max-width: 768px) {
