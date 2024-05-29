@@ -7,6 +7,7 @@ import Composs from './Components/Home/Composs';
 import InboxPage from './Components/Home/InboxPage';
 import { Redirect, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { useSelector } from 'react-redux';
+import SendboxPage from './Components/Home/Sendboxpage';
 
 function App() {
   const isLoggedin = useSelector(state=> state.Auth.isLoggedin) 
@@ -26,6 +27,7 @@ function App() {
        <Route path='*'>
         <Redirect to='/login' />
        </Route>
+       
         </div>
         
         }
@@ -41,6 +43,9 @@ function App() {
       <Route path='/inbox'>
         <InboxPage/>
       </Route>
+      <Route path='/sendbox'>
+          <SendboxPage/>
+       </Route>
       <Route path='*'>
         <Redirect to='/Home'/>
        </Route>

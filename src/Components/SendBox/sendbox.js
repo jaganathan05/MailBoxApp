@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react';
-import styles from './Inbox.module.css'
+import styles from './Sendbox.module.css'
 import axios from 'axios';
-import { ArrowLeftCircleFill, BriefcaseFill, CircleFill, EnvelopeAtFill,    PersonCircle, Trash } from 'react-bootstrap-icons';
+import { ArrowLeftCircleFill, BriefcaseFill, CheckAll, Check, EnvelopeAtFill,    PersonCircle, Trash } from 'react-bootstrap-icons';
 import  Button  from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReceivedMails} from '../../Store/Slices/Mails';
-function Inbox (){
+import { fetchSendedMails } from '../../Store/Slices/Mails';
+function Sendbox (){
     const [mails , setmails]= useState([])
     const dispatch =useDispatch()
-    const MailSelector = useSelector(state=> state.Mail.ReceivedMails)
+    const MailSelector = useSelector(state=> state.Mail.SendedMails)
     const token = useSelector(state=> state.Auth.Token)
     const [selectedMail, setSelectedMail] = useState(null);
     const [refresh , setrefresh]= useState(false)
 
     useEffect(() => {
-        dispatch(fetchReceivedMails(token))
+        dispatch(fetchSendedMails(token))
         setrefresh(false)
-       console.log('refresh')
     }, [dispatch, token , refresh]);
 
     useEffect(()=>{
@@ -27,20 +26,7 @@ function Inbox (){
     const singleMailPageHandler =async(mail) => {
         try{
             console.log(token)
-            setSelectedMail(mail);
-            if(!mail.read){
-                const response = await axios.post(`http://localhost:4000/Mailupdate/${mail.id}`,{}, {
-                    headers :{
-                        Authorization : token
-                    }
-                });
-                if(response.data.success){
-                    console.log(response)
-                    setrefresh(true)
-                   
-                }
-            }
-            
+            setSelectedMail(mail);    
            
         }
         catch{
@@ -50,12 +36,12 @@ function Inbox (){
       
     };
 
-    const backToInboxHandler = () => {
+    const backTosendboxHandler = () => {
         setSelectedMail(null);
     };
 
     const deletemailhandler = async(mail) =>{
-        const response = await axios.post(`http://localhost:4000/deleterecivemail/${mail.id}`,{},{
+        const response = await axios.post(`http://localhost:4000/deletesendermail/${mail.id}`,{},{
             headers : {
                 Authorization : token
             }
@@ -91,13 +77,14 @@ function Inbox (){
     return (
                 <div className={styles["inbox-container"]}>
                     <div className={styles["inbox-box"]} >
-                        <h4>INBOX</h4>
+                        <h4>SENDBOX</h4>
                         {selectedMail ? (
                     <div className={styles["mail-content"]}>
-                        <Button onClick={backToInboxHandler} className={styles["back-button"]}><ArrowLeftCircleFill/>  Back to Inbox</Button><Button className={styles["delete-button"]} onClick={deletemailhandler.bind(null,selectedMail)}> <Trash/> </Button><p>
+                        <Button onClick={backTosendboxHandler} className={styles["back-button"]}><ArrowLeftCircleFill/>  Back </Button><Button className={styles["delete-button"]} onClick={deletemailhandler.bind(null,selectedMail)}> <Trash/> </Button><p><p>{!selectedMail.read && <Check  />}
+                            {selectedMail.read && <CheckAll  />}</p>
                             Date :  {formatDate(selectedMail.createdAt)}
                         </p>
-                        <h5>From: <span className={styles['email']}><PersonCircle/> {selectedMail.sender}</span> </h5>
+                        <h5>To: <span className={styles['email']}><PersonCircle/> {selectedMail.sender}</span> </h5>
                         <h6>Subject: <span className={styles['subject']}> {selectedMail.subject}</span> </h6>
                         <p className={styles['content']} dangerouslySetInnerHTML={{__html: selectedMail.content}}></p>
                     </div>
@@ -105,7 +92,8 @@ function Inbox (){
                     mails.map(mail => (
                         <div key={mail.id} className={styles['singlemail']} onClick={() => singleMailPageHandler(mail)}>
                             <p>
-                                {!mail.read && <CircleFill className={styles['circle']} />}
+                            {!mail.read && <Check  />}
+                            {mail.read && <CheckAll  />}
                                 <i className={styles['mailhead']}><EnvelopeAtFill  /> {mail.sender} </i><i className={styles['time']}>{formatTime(mail.createdAt)}</i><br />
                                 <i className={styles['mailhead-subject']}>< BriefcaseFill/> {mail.subject}</i>
                             </p>
@@ -119,4 +107,4 @@ function Inbox (){
 
 }
 
-export default Inbox;
+export default Sendbox;

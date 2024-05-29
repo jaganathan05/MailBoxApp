@@ -8,10 +8,12 @@ import { EditorState, convertToRaw } from 'draft-js';
 import { useRef ,useState} from "react";
 import draftToHtml from 'draftjs-to-html';
 import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
 function MailForm (props){
+  const history = useHistory()
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -41,6 +43,10 @@ content : draftToHtml(convertToRaw(editorState.getCurrentContent()))
       setEditorState(
         EditorState.createEmpty()
       )
+
+      history.push('sendbox')
+
+
     }
     else {
       alert(response.data.message); 
