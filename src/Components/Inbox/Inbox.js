@@ -14,10 +14,12 @@ function Inbox (){
     const [refresh , setrefresh]= useState(false)
 
     useEffect(() => {
-        dispatch(fetchReceivedMails(token))
-        setrefresh(false)
-       console.log('refresh')
-    }, [dispatch, token , refresh]);
+        const intervalId = setInterval(() => {
+            dispatch(fetchReceivedMails(token));
+            console.log('refresh');
+          }, 2000); 
+          return () => clearInterval(intervalId);
+    }, [dispatch, token ]);
 
     useEffect(()=>{
         

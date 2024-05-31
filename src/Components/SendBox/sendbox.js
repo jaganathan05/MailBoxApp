@@ -14,9 +14,12 @@ function Sendbox (){
     const [refresh , setrefresh]= useState(false)
 
     useEffect(() => {
-        dispatch(fetchSendedMails(token))
-        setrefresh(false)
-    }, [dispatch, token , refresh]);
+        const intervalId = setInterval(() => {
+            dispatch(fetchSendedMails(token));
+            console.log('refresh');
+          }, 2000); 
+          return () => clearInterval(intervalId);
+    }, [dispatch, token ]);
 
     useEffect(()=>{
         
